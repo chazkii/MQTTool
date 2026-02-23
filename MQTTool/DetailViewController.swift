@@ -26,40 +26,39 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailQosLabel: UILabel!
     @IBOutlet weak var detailMidLabel: UILabel!
     @IBOutlet weak var detailTimestampLabel: UILabel!
-    
+
     var messageData: Data?
     var messageText: String?
     var messageTopic: String = ""
     var messageID: Int = 0
     var messageQOS: Int32 = 0
-    var messageTimestamp = NSDate(timeIntervalSince1970: 0)
+    var messageTimestamp = Date(timeIntervalSince1970: 0)
     // Others?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let gradientView = GradientView(frame: self.view.bounds)
         self.view.insertSubview(gradientView, at: 0)
-        
-        // detailTopicButton.setTitle("Topic: \(messageTopic)", for: .normal)
+
         let topicString = NSMutableAttributedString(string: "Topic: ", attributes: normalAttrs)
         topicString.append(NSMutableAttributedString(string:"\(messageTopic)", attributes: underlineAttrs))
         detailTopicButton.setAttributedTitle(topicString, for: .normal)
-        
+
         detailQosLabel.text = "QOS: \(messageQOS)"
-        
+
         detailMidLabel.text = "Message ID: \(messageID)"
-        
+
         let formatter = DateFormatter()
         formatter.dateStyle = DateFormatter.Style.short
         formatter.timeStyle = .medium
-        
-        let dateString = formatter.string(from: messageTimestamp as Date)
-        
+
+        let dateString = formatter.string(from: messageTimestamp)
+
         detailTimestampLabel.text = "Timestamp: \(dateString)"
 
         // Do any additional setup after loading the view.
-        if(messageText != nil) {
+        if messageText != nil {
             detailTextBox.text = messageText
         } else {
             if let messageDataString = messageData?.base64EncodedString() {
@@ -68,41 +67,35 @@ class DetailViewController: UIViewController {
                 detailTextBox.text = ""
             }
         }
- 
-        
+
+
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
+
     @IBAction func dismissButton() {
         self.dismiss(animated: true, completion: nil)
     }
-    
+
 
     @IBAction func topicButton(_ sender: UIButton) {
 
         let alertController: UIAlertController
-        
+
         alertController = UIAlertController(title: "Modify Subscription", message: "Would you like to set the subscription to the topic: \"\(messageTopic)\"?", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-            
+
                 print("The \"OK\" alert occured.")
             let userInfo = [ "topic": self.messageTopic] as [String: String]
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateSubscriptionTopic"), object: nil, userInfo: userInfo)
-            // NotificationCenter.default.post(name: "reload", object: nil, userInfo: userInfo)
-            
+            NotificationCenter.default.post(name: ConnectionManager.updateSubscriptionTopic, object: nil, userInfo: userInfo)
+
             self.dismiss(animated: true, completion: nil)
         }))
-        
+
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
                 //execute some cancel stuff
                 print("Cancelled")
             }))
-        
+
         alertController.modalPresentationStyle = UIModalPresentationStyle.popover
         alertController.popoverPresentationController?.sourceView = sender // works for both iPhone & iPad
         alertController.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: sender.frame.size.width, height: sender.frame.size.height)

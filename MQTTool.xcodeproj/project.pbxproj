@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -32,6 +32,8 @@
 		84A36082200A773500FC427D /* SubscribeSetting+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A3607A200A773500FC427D /* SubscribeSetting+CoreDataProperties.swift */; };
 		84CC366220079C6200866BB1 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CC366120079C6200866BB1 /* UserSettings.swift */; };
 		84FAA6612007DEC600AF5A1B /* UserSettings.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84FAA65F2007DEC600AF5A1B /* UserSettings.xcdatamodeld */; };
+		AA0000012026020100000001 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000002026020100000001 /* ConnectionManager.swift */; };
+		AA0000032026020100000003 /* CocoaMQTT in Frameworks */ = {isa = PBXBuildFile; productRef = AA0000022026020100000002 /* CocoaMQTT */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -89,6 +91,7 @@
 		84A3607A200A773500FC427D /* SubscribeSetting+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscribeSetting+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		84CC366120079C6200866BB1 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		84FAA6602007DEC600AF5A1B /* UserSettings.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserSettings.xcdatamodel; sourceTree = "<group>"; };
+		AA0000002026020100000001 /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA0000032026020100000003 /* CocoaMQTT in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +142,7 @@
 				844F4F2E1D30880F00926F00 /* GradientView.swift */,
 				844F4F231D3087FB00926F00 /* LoginViewController.swift */,
 				844F4F241D3087FB00926F00 /* MQTToolConnection.swift */,
+				AA0000002026020100000001 /* ConnectionManager.swift */,
 				844F4F251D3087FB00926F00 /* PublishViewController.swift */,
 				844F4F261D3087FB00926F00 /* StatsViewController.swift */,
 				844F4F271D3087FB00926F00 /* SubscribeViewController.swift */,
@@ -198,6 +203,9 @@
 			dependencies = (
 			);
 			name = MQTTool;
+			packageProductDependencies = (
+				AA0000022026020100000002 /* CocoaMQTT */,
+			);
 			productName = MQTTool;
 			productReference = 844F4EEE1D30874300926F00 /* MQTTool.app */;
 			productType = "com.apple.product-type.application";
@@ -229,7 +237,7 @@
 				};
 			};
 			buildConfigurationList = 844F4EE91D30874300926F00 /* Build configuration list for PBXProject "MQTTool" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -237,6 +245,9 @@
 				Base,
 			);
 			mainGroup = 844F4EE51D30874300926F00;
+			packageReferences = (
+				AA0000042026020100000004 /* XCRemoteSwiftPackageReference "CocoaMQTT" */,
+			);
 			productRefGroup = 844F4EEF1D30874300926F00 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -286,6 +297,7 @@
 				84FAA6612007DEC600AF5A1B /* UserSettings.xcdatamodeld in Sources */,
 				844F4F2A1D3087FB00926F00 /* PublishViewController.swift in Sources */,
 				84A36082200A773500FC427D /* SubscribeSetting+CoreDataProperties.swift in Sources */,
+				AA0000012026020100000001 /* ConnectionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,7 +323,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -354,14 +366,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -375,7 +387,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -413,14 +425,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -434,7 +446,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 4GYWZFMR77;
 				INFOPLIST_FILE = MQTTool/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brentpetit.MQTTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -453,7 +465,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 4GYWZFMR77;
 				INFOPLIST_FILE = MQTTool/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brentpetit.MQTTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -486,6 +498,25 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AA0000042026020100000004 /* XCRemoteSwiftPackageReference "CocoaMQTT" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/emqx/CocoaMQTT.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AA0000022026020100000002 /* CocoaMQTT */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA0000042026020100000004 /* XCRemoteSwiftPackageReference "CocoaMQTT" */;
+			productName = CocoaMQTT;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		84FAA65F2007DEC600AF5A1B /* UserSettings.xcdatamodeld */ = {
